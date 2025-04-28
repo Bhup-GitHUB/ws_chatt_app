@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+
+# Output folder after TypeScript builds
+dist/
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/
+
+# TypeScript build files
+*.tsbuildinfo

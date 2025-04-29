@@ -9,7 +9,7 @@ wss.on("connection", (socket) => {
   userCount++;
   console.log(`User connected. Total users: ${userCount}`);
 
-  // Add the new socket to the array
+  // Add the new socket to the array will change later on
   allSockets.push(socket);
 
   socket.on("message", (event) => {

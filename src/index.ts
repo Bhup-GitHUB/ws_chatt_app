@@ -20,15 +20,15 @@ wss.on("connection", (socket) => {
     //     }
     // }
 
-
-  //   {
-  //     "type":"chat",
-  //     "payload":{
-  //     "message":"hi there"
-  //     }
-  // }
+    //   {
+    //     "type":"chat",
+    //     "payload":{
+    //     "message":"hi there"
+    //     }
+    // }
 
     const parsedMessage = JSON.parse(message as unknown as string);
+    console.log(parsedMessage);
     if (parsedMessage.type === "join") {
       allSockets.push({
         socket,
@@ -36,9 +36,12 @@ wss.on("connection", (socket) => {
       });
     }
 
-    if(parsedMessage.type === "chat"){
+    if (parsedMessage.type === "chat") {
+      const sender = allSockets.find((user) => user.socket === socket);
+      if (!sender) return;
+
       allSockets.forEach((user) => {
-        if(user.room === parsedMessage.payload.roomID){
+        if (user.room === sender.room) {
           user.socket.send(JSON.stringify(parsedMessage));
         }
       });
